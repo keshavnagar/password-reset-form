@@ -13,7 +13,7 @@ const App = () => {
         <h2 className="text-[1.4rem] w-full text-[#090C9B]">
           enter email and new password
         </h2>
-        <form className="w-full mt-[1rem] mb-[1rem] flex flex-col gap-[1rem]">
+        <form className="w-full mt-4 mb-4 flex flex-col gap-4">
           <div>
             <label htmlFor="email">
               <MdOutlineEmail className="text-[1.5rem]" color="#090C9B" />
