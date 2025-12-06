@@ -47,7 +47,7 @@ const App = () => {
               placeholder="confirm new password"
             />
           </div>
-          <button className="text-sm p-2  transition duration-300  hover:shadow-md hover:bg-[#020973]  outline-none mt-2  text-[#9fb8f1] rounded-md bg-[#090C9B] text-[1rem] font-bold">
+          <button className="text-sm p-2  transition duration-300  hover:shadow-md hover:bg-[#020973]  outline-none mt-2  text-[#9fb8f1] rounded-md bg-[#090C9B] text-[1rem] font-bold cursor-pointer">
             Reset
           </button>
         </form>
