@@ -15,9 +15,17 @@ const App = () => {
   };
   const handleForm = (e) => {
     e.preventDefault();
-    resetPassword.password === resetPassword.confirmPassword
-      ? console.log("password matched")
-      : console.log("password don't matched");
+    resetPassword.email.trim()
+      ? console.log(resetPassword.email)
+      : console.log("fill the email  field");
+    resetPassword.password.trim()
+      ? console.log(resetPassword.password)
+      : console.log("fill the password  field");
+    resetPassword.email.trim() && resetPassword.password
+      ? resetPassword.password === resetPassword.confirmPassword
+        ? console.log("password matched")
+        : console.log("password don't matched")
+      : console.log("fill the both email and password field");
   };
   return (
     <section className="w-screen h-screen bg-[#090C9B] flex justify-center items-center">
@@ -75,10 +83,12 @@ const App = () => {
               onChange={handleInput}
             />
           </div>
-         
+
           <button
             type="submit"
-            className="text-sm p-2  transition duration-300  hover:shadow-md hover:bg-[#020973]  outline-none mt-2  text-[#9fb8f1] rounded-md bg-[#090C9B] text-[1rem] font-bold cursor-pointer"
+            disabled={resetPassword.password !== resetPassword.confirmPassword}
+            className="text-sm p-2  transition duration-300  hover:shadow-md hover:bg-[#020973]  outline-none mt-2  text-[#9fb8f1] rounded-md bg-[#090C9B] text-[1rem] font-bold cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed  disabled:hover:bg-[#090C9B]
+    disabled:hover:shadow-none"
           >
             Reset
           </button>
