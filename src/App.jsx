@@ -1,8 +1,24 @@
+import { useState } from "react";
 import { MdLockReset } from "react-icons/md";
 import { MdOutlineEmail } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { RiLockPasswordFill } from "react-icons/ri";
 const App = () => {
+  const [resetPassword, setResetPassword] = useState({
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const handleInput = (e) => {
+    const { name, value } = e.target;
+    setResetPassword((prev) => ({ ...prev, [name]: value }));
+  };
+  const handleForm = (e) => {
+    e.preventDefault();
+    resetPassword.password === resetPassword.confirmPassword
+      ? console.log("password matched")
+      : console.log("password don't matched");
+  };
   return (
     <section className="w-screen h-screen bg-[#090C9B] flex justify-center items-center">
       <div className="bg-[#3D52D5] w-[360px] shadow-[0px_4px_20px_rgba(2,9,115,0.4)] rounded-[16px] p-[24px] flex flex-col  items-center  ">
@@ -13,7 +29,10 @@ const App = () => {
         <h2 className="text-[1.4rem] w-full text-[#090C9B]">
           enter email and new password
         </h2>
-        <form className="w-full mt-4 mb-4 flex flex-col gap-4">
+        <form
+          onSubmit={handleForm}
+          className="w-full mt-4 mb-4 flex flex-col gap-4"
+        >
           <div>
             <label htmlFor="email">
               <MdOutlineEmail className="text-[1.5rem]" color="#090C9B" />
@@ -23,6 +42,9 @@ const App = () => {
               id="email"
               type="email"
               placeholder="enter your email address"
+              name="email"
+              value={resetPassword.email}
+              onChange={handleInput}
             />
           </div>
           <div>
@@ -34,6 +56,9 @@ const App = () => {
               id="password"
               type="password"
               placeholder="enter new password"
+              name="password"
+              value={resetPassword.password}
+              onChange={handleInput}
             />
           </div>
           <div>
@@ -45,9 +70,16 @@ const App = () => {
               id="confirmPassword"
               type="password"
               placeholder="confirm new password"
+              name="confirmPassword"
+              value={resetPassword.confirmPassword}
+              onChange={handleInput}
             />
           </div>
-          <button className="text-sm p-2  transition duration-300  hover:shadow-md hover:bg-[#020973]  outline-none mt-2  text-[#9fb8f1] rounded-md bg-[#090C9B] text-[1rem] font-bold cursor-pointer">
+         
+          <button
+            type="submit"
+            className="text-sm p-2  transition duration-300  hover:shadow-md hover:bg-[#020973]  outline-none mt-2  text-[#9fb8f1] rounded-md bg-[#090C9B] text-[1rem] font-bold cursor-pointer"
+          >
             Reset
           </button>
         </form>
